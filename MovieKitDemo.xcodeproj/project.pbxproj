@@ -13,6 +13,8 @@
 		88DBDAA828CD9F56004BDFA6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88DBDAA628CD9F56004BDFA6 /* Main.storyboard */; };
 		88DBDAAA28CD9F56004BDFA6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 88DBDAA928CD9F56004BDFA6 /* Assets.xcassets */; };
 		88DBDAAD28CD9F56004BDFA6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88DBDAAB28CD9F56004BDFA6 /* LaunchScreen.storyboard */; };
+		88DBDAC228CDA326004BDFA6 /* Composition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88DBDAC028CDA326004BDFA6 /* Composition.swift */; };
+		88DBDAC328CDA326004BDFA6 /* Clip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88DBDAC128CDA326004BDFA6 /* Clip.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +27,8 @@
 		88DBDAA928CD9F56004BDFA6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		88DBDAAC28CD9F56004BDFA6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		88DBDAAE28CD9F56004BDFA6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		88DBDAC028CDA326004BDFA6 /* Composition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Composition.swift; sourceTree = "<group>"; };
+		88DBDAC128CDA326004BDFA6 /* Clip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Clip.swift; sourceTree = "<group>"; };
 		EDA5199041CC9687B2C64F28 /* Pods-MovieKitDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieKitDemo.debug.xcconfig"; path = "Target Support Files/Pods-MovieKitDemo/Pods-MovieKitDemo.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -51,6 +55,7 @@
 		88DBDA9428CD9F56004BDFA6 = {
 			isa = PBXGroup;
 			children = (
+				88DBDABE28CDA326004BDFA6 /* MovieKit */,
 				88DBDA9F28CD9F56004BDFA6 /* MovieKitDemo */,
 				88DBDA9E28CD9F56004BDFA6 /* Products */,
 				EA19B45249D1EBC09BE676C4 /* Pods */,
@@ -77,6 +82,23 @@
 				88DBDAAE28CD9F56004BDFA6 /* Info.plist */,
 			);
 			path = MovieKitDemo;
+			sourceTree = "<group>";
+		};
+		88DBDABE28CDA326004BDFA6 /* MovieKit */ = {
+			isa = PBXGroup;
+			children = (
+				88DBDABF28CDA326004BDFA6 /* Core */,
+			);
+			path = MovieKit;
+			sourceTree = "<group>";
+		};
+		88DBDABF28CDA326004BDFA6 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				88DBDAC128CDA326004BDFA6 /* Clip.swift */,
+				88DBDAC028CDA326004BDFA6 /* Composition.swift */,
+			);
+			path = Core;
 			sourceTree = "<group>";
 		};
 		EA19B45249D1EBC09BE676C4 /* Pods */ = {
@@ -119,6 +141,7 @@
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1340;
 				LastUpgradeCheck = 1340;
+				ORGANIZATIONNAME = "Lyman Li";
 				TargetAttributes = {
 					88DBDA9C28CD9F56004BDFA6 = {
 						CreatedOnToolsVersion = 13.4.1;
@@ -203,6 +226,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				88DBDAC228CDA326004BDFA6 /* Composition.swift in Sources */,
+				88DBDAC328CDA326004BDFA6 /* Clip.swift in Sources */,
 				88DBDAA528CD9F56004BDFA6 /* ViewController.swift in Sources */,
 				88DBDAA128CD9F56004BDFA6 /* AppDelegate.swift in Sources */,
 			);
