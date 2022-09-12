@@ -25,7 +25,5 @@ class EditorTopToolBar: UIView {
     // MARK: - Private
     
     private func setup() {
-        
-        self.backgroundColor = .orange
     }
 }

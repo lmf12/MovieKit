@@ -25,7 +25,5 @@ class EditorSubBottomToolBar: UIView {
     // MARK: - Private
     
     private func setup() {
-        
-        self.backgroundColor = .red
     }
 }

@@ -26,6 +26,5 @@ class EditorPlayerView: UIView {
     
     private func setup() {
         
-        self.backgroundColor = .gray
     }
 }

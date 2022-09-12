@@ -26,6 +26,5 @@ class EditorBottomToolBar: UIView {
     
     private func setup() {
         
-        self.backgroundColor = .blue
     }
 }
