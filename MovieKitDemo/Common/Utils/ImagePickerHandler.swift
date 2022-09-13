@@ -36,5 +36,7 @@ class ImagePickerHandler {
         ZLPhotoUIConfiguration.default().bottomToolViewBtnNormalBgColor = UIColor(rgba: Colors.orange)
         ZLPhotoUIConfiguration.default().bottomToolViewBtnNormalBgColorOfPreviewVC = UIColor(rgba: Colors.orange)
         ZLPhotoUIConfiguration.default().selectedBorderColor = UIColor(rgba: Colors.orange)
+        ZLPhotoUIConfiguration.default().customImageForKey["zl_navBack"] = UIImage(named: "icon_back")
+        ZLPhotoUIConfiguration.default().customImageForKey["zl_navClose"] = UIImage(named: "icon_close")
     }
 }
