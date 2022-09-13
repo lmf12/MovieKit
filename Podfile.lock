@@ -1,20 +1,22 @@
 PODS:
-  - BSImagePicker (3.1.0)
   - SnapKit (5.6.0)
+  - ZLPhotoBrowser (4.3.6):
+    - ZLPhotoBrowser/Core (= 4.3.6)
+  - ZLPhotoBrowser/Core (4.3.6)
 
 DEPENDENCIES:
-  - BSImagePicker (= 3.1)
   - SnapKit (= 5.6.0)
+  - ZLPhotoBrowser (= 4.3.6)
 
 SPEC REPOS:
   trunk:
-    - BSImagePicker
     - SnapKit
+    - ZLPhotoBrowser
 
 SPEC CHECKSUMS:
-  BSImagePicker: a100bedacb3c6cdec20efb2dd326d9765ab70c1c
   SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
+  ZLPhotoBrowser: 332a6d3c43262bbfd1596a53f5bb9d060360d6b8
 
-PODFILE CHECKSUM: c4553577f6ff58219cedefc76733de803a920442
+PODFILE CHECKSUM: 6d7ff58c28991b7fcc6fab530c74af88b6a86843
 
 COCOAPODS: 1.11.3

@@ -10,6 +10,8 @@ import UIKit
 
 extension EditorViewController : EditorTimelineBarDelegate {
     func timelineBarDidClickAdd(timelineBar: EditorTimelineBar) {
-        ImagePickerHandler.showImagePicker(currentVC: self)
+        ImagePickerHandler.showImagePicker(currentVC: self) { (images, assets, isFull) in
+            
+        }
     }
 }
