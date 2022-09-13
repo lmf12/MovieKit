@@ -42,6 +42,8 @@ class ImagePickerHandler {
         settings.theme.selectionShadowColor = .white
         settings.theme.selectionStrokeColor = .white
         settings.theme.albumTitleAttributes[NSAttributedString.Key.foregroundColor] = UIColor.white
+        settings.theme.previewTitleAttributes[NSAttributedString.Key.foregroundColor] = UIColor.clear
+        settings.theme.previewSubtitleAttributes[NSAttributedString.Key.foregroundColor] = UIColor.clear
         
         settings.selection.max = 5
         settings.fetch.assets.supportedMediaTypes = [.image, .video]
