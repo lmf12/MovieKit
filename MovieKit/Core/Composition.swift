@@ -9,9 +9,9 @@
 import AVFoundation
 
 class Composition {
-    private(set) var composition : AVComposition
+    private var composition: AVComposition
     
-    init(composition : AVComposition) {
+    init(composition: AVComposition) {
         self.composition = composition
     }
 
@@ -23,7 +23,7 @@ class Composition {
     }
     
     // 创建可导出项目
-    public func createAssetExportSession(exportPreset : String?) -> AVAssetExportSession? {
+    public func createAssetExportSession(exportPreset: String?) -> AVAssetExportSession? {
         return AVAssetExportSession(asset: composition.copy() as! AVAsset,
                                     presetName: exportPreset ?? AVAssetExportPresetHighestQuality)
     }

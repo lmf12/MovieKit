@@ -9,15 +9,15 @@
 import AVFoundation
 
 class Clip {
-    var startTime : CMTime = .zero
-    var timeRange : CMTimeRange {
+    var startTime: CMTime = .zero
+    var timeRange: CMTimeRange {
         get {
             return CMTimeRange(start: .zero, duration: self.asset.duration)
         }
     }
-    private(set) var asset : AVAsset
+    private(set) var asset: AVAsset
     
-    init(asset : AVAsset) {
+    init(asset: AVAsset) {
         self.asset = asset
     }
 }
