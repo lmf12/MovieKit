@@ -21,7 +21,7 @@ class CompositionBuilder {
     public func bulidComposition() -> Composition {
         let mutComposition = AVMutableComposition()
         self.mutComposition = mutComposition
-        for clips in timeline.clips {
+        for clips in timeline.tracks {
             self.addCompositionTrack(type: .video, clips: clips)
             self.addCompositionTrack(type: .audio, clips: clips)
         }

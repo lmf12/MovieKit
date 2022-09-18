@@ -30,6 +30,10 @@ extension UIColor {
         )
     }
     
+    convenience init(rgba: Colors) {
+        self.init(rgba: rgba.rawValue)
+    }
+    
     convenience init(rgb: Int) {
         self.init(
             red: (rgb >> 24) & 0xFF,

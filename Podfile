@@ -7,5 +7,6 @@ target 'MovieKitDemo' do
 
   pod 'ZLPhotoBrowser', '4.3.6'
   pod 'SnapKit', '5.6.0'
+  pod 'Toast-Swift', '5.0.1'
 
 end

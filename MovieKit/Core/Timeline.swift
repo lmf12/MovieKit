@@ -9,5 +9,5 @@
 import AVFoundation
 
 class Timeline {
-    var clips: [[Clip]] = []
+    var tracks: [[Clip]] = []
 }

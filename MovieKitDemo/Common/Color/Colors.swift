@@ -8,11 +8,11 @@
 
 import UIKit
 
-class Colors {
-    static let darkGray = 0x2C2C2CFF;
-    static let middleGray = 0x515151FF;
-    static let lightGray = 0x707070FF;
-    static let tinyGray = 0xDBDBDBFF;
-    static let yellow = 0xF4EA2AFF;
-    static let orange = 0xF5A623FF;
+enum Colors: Int {
+    case darkGray = 0x2C2C2CFF
+    case middleGray = 0x515151FF
+    case lightGray = 0x707070FF
+    case tinyGray = 0xDBDBDBFF
+    case yellow = 0xF4EA2AFF
+    case orange = 0xF5A623FF
 }

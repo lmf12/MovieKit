@@ -13,44 +13,19 @@ import AVFoundation
 extension EditorViewController : EditorTimelineBarDelegate {
     func timelineBarDidClickAdd(timelineBar: EditorTimelineBar) {
         ImagePickerHandler.showImagePicker(currentVC: self) { (images, assets, isFull) in
-            var clips: [Clip] = []
-            let group = DispatchGroup()
+            self.view.makeToastLoading()
+        } completion: { (images, assets, isFull) in
             var start = CMTime.zero
             for asset in assets {
-                group.enter()
-                PHImageManager.default().requestAVAsset(forVideo: asset, options: nil) { avAsset, audioMix, info in
-                    if let avAsset = avAsset {
-                        let clip = Clip(asset: avAsset)
-                        clip.startTime = start
-                        clips.append(clip)
-                        start = CMTimeAdd(start, avAsset.duration)
-                    }
-                    group.leave()
-                }
+                let clip = Clip(asset: asset, startTime: start)
+                start = CMTimeAdd(start, asset.duration)
+                MovieManager.shared.addVideoClip(clip: clip)
             }
-            group.wait()
-            let timeline = Timeline()
-            timeline.clips = [clips]
             
-            let builder = CompositionBuilder(timeline: timeline)
-            let composition = builder.bulidComposition()
-            let exportSession = composition.createAssetExportSession(exportPreset: nil)
-            
-            let fileName = String(format: "%f.m4v", NSDate.timeIntervalSinceReferenceDate * 1000)
-            let path = NSTemporaryDirectory() + fileName
-            
-            exportSession?.outputFileType = .m4v
-            exportSession?.outputURL = URL(fileURLWithPath: path)
-            
-            exportSession?.exportAsynchronously {
-                PHPhotoLibrary.shared().performChanges {
-                    PHAssetChangeRequest.creationRequestForAssetFromVideo(atFileURL: URL(fileURLWithPath: path))
-                } completionHandler: { success, error in
-                    if (success) {
-                        print("保存成功")
-                    }
-                }
-
+            MovieManager.shared.export { success, error in
+                self.view.hideToastLoading()
+                self.view.makeToast(success ? "保存成功" : "保存失败")
+                MovieManager.shared.reset()
             }
         }
     }

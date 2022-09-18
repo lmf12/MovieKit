@@ -12,7 +12,37 @@ import SnapKit
 import ZLPhotoBrowser
 
 class ImagePickerHandler {
-    static func showImagePicker(currentVC : UIViewController, completion: (([UIImage], [PHAsset], Bool) -> Void)?) {
+    static func showImagePicker(currentVC : UIViewController,
+                                willRequest: (([UIImage], [PHAsset], Bool) -> Void)?,
+                                completion: (([UIImage], [AVAsset], Bool) -> Void)?) {
+        showImagePicker(currentVC: currentVC) { (images, assets, isFull) in
+            if let willRequest = willRequest {
+                willRequest(images, assets, isFull)
+            }
+            DispatchQueue.global().async {
+                var avassets: [AVAsset] = []
+                let group = DispatchGroup()
+                for asset in assets {
+                    group.enter()
+                    PHImageManager.default().requestAVAsset(forVideo: asset, options: nil) { avAsset, audioMix, info in
+                        if let avAsset = avAsset {
+                            avassets.append(avAsset)
+                        }
+                        group.leave()
+                    }
+                }
+                group.wait()
+                if let completion = completion {
+                    DispatchQueue.main.async {
+                        completion(images, avassets, isFull)
+                    }
+                }
+            }
+        }
+    }
+    
+    static func showImagePicker(currentVC : UIViewController,
+                                completion: (([UIImage], [PHAsset], Bool) -> Void)?) {
         setupConfiguration()
         let imagePicker = ZLPhotoPreviewSheet()
         imagePicker.selectImageBlock = completion
@@ -31,11 +61,11 @@ class ImagePickerHandler {
         ZLPhotoConfiguration.default().maxSelectCount = 5
         
         ZLPhotoUIConfiguration.default().previewVCBgColor = ZLPhotoUIConfiguration.default().albumListBgColor
-        ZLPhotoUIConfiguration.default().indexLabelBgColor = UIColor(rgba: Colors.orange)
-        ZLPhotoUIConfiguration.default().sheetBtnTitleTintColor = UIColor(rgba: Colors.orange)
-        ZLPhotoUIConfiguration.default().bottomToolViewBtnNormalBgColor = UIColor(rgba: Colors.orange)
-        ZLPhotoUIConfiguration.default().bottomToolViewBtnNormalBgColorOfPreviewVC = UIColor(rgba: Colors.orange)
-        ZLPhotoUIConfiguration.default().selectedBorderColor = UIColor(rgba: Colors.orange)
+        ZLPhotoUIConfiguration.default().indexLabelBgColor = UIColor(rgba: .orange)
+        ZLPhotoUIConfiguration.default().sheetBtnTitleTintColor = UIColor(rgba: .orange)
+        ZLPhotoUIConfiguration.default().bottomToolViewBtnNormalBgColor = UIColor(rgba: .orange)
+        ZLPhotoUIConfiguration.default().bottomToolViewBtnNormalBgColorOfPreviewVC = UIColor(rgba: .orange)
+        ZLPhotoUIConfiguration.default().selectedBorderColor = UIColor(rgba: .orange)
         ZLPhotoUIConfiguration.default().customImageForKey["zl_navBack"] = UIImage(named: "icon_back")
         ZLPhotoUIConfiguration.default().customImageForKey["zl_navClose"] = UIImage(named: "icon_close")
     }

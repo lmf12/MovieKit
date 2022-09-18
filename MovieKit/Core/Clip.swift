@@ -9,15 +9,38 @@
 import AVFoundation
 
 class Clip {
-    var startTime: CMTime = .zero
+    private(set) var asset: AVAsset
+    private(set) var startTime: CMTime
+    private var targetTimeRange: CMTimeRange = .zero
+        
     var timeRange: CMTimeRange {
+        get {
+            return CMTimeRangeEqual(targetTimeRange, .zero) ? sourceTimeRange : targetTimeRange
+        }
+        set {
+            targetTimeRange = newValue
+        }
+    }
+    
+    var sourceTimeRange: CMTimeRange {
         get {
             return CMTimeRange(start: .zero, duration: self.asset.duration)
         }
     }
-    private(set) var asset: AVAsset
     
-    init(asset: AVAsset) {
+    init(asset: AVAsset, startTime: CMTime, timeRange: CMTimeRange = .zero) {
         self.asset = asset
+        self.startTime = startTime
+        self.timeRange = timeRange
+    }
+}
+
+extension Clip {
+    /// 片段是否重叠
+    func isOverlap(clip: Clip) -> Bool {
+        return ((CMTimeCompare(self.startTime, clip.startTime) < 0 &&
+                CMTimeCompare(self.timeRange.end, clip.startTime) > 0) ||
+                (CMTimeCompare(clip.startTime, self.startTime) < 0 &&
+                 CMTimeCompare(clip.timeRange.end, self.startTime) > 0))
     }
 }

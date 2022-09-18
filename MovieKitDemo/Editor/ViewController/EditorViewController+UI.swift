@@ -12,12 +12,11 @@ import SnapKit
 extension EditorViewController {
     
     func setupUI() {
-        view.backgroundColor = UIColor(rgba: Colors.darkGray)
+        view.backgroundColor = UIColor(rgba: .darkGray)
         
         let bottomPanel = UIView()
-        bottomPanel.backgroundColor = UIColor(rgba: Colors.middleGray)
+        bottomPanel.backgroundColor = UIColor(rgba: .middleGray)
         view.addSubview(bottomPanel)
-        
         
         setupTopToolBar()
         setupPlayerView()
